@@ -8,6 +8,9 @@ public class UserSerializable implements Serializable {
     private String[] imgUrls;
     private int age = 0;
 
+    public UserSerializable() {
+    }
+
     public UserSerializable(String id, String[] imgUrls, int age) {
         this.id = id;
         this.imgUrls = imgUrls;

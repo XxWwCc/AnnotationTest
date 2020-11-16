@@ -11,6 +11,9 @@ public class UserParcelable implements Parcelable {
     private String[] imgUrls;
     private int age = 0;
 
+    public UserParcelable() {
+    }
+
     public UserParcelable(String id, String[] imgUrls, int age) {
         this.id = id;
         this.imgUrls = imgUrls;

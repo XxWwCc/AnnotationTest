@@ -9,6 +9,7 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 
+/**注解处理器*/
 @SupportedAnnotationTypes("com.xwc.annotationtest.annotation.Smoker")
 public class SmokerProcessor extends AbstractProcessor {
     @Override

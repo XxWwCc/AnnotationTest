@@ -16,6 +16,9 @@ public class IntentUtil {
 
         Intent intent = activity.getIntent();
         Bundle extras = intent.getExtras();     // 使用 bundle 不直接用 intent 是因为 bundle 父类有 get() 可以直接获取值不需要知道类型
+        if (extras == null || extras.isEmpty()) {
+            return;
+        }
 
         Field[] declaredFiles = cls.getDeclaredFields();
 

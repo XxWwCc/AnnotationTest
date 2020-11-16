@@ -17,13 +17,13 @@ public class SecondActivity extends AppCompatActivity {
     private String name;
 
     @IntentAnnotation("")
-    private UserParcelable userParcelable;
+    private UserParcelable userParcelable = new UserParcelable();
 
     @IntentAnnotation("")
-    private UserParcelable[] userParcelables;
+    private UserParcelable[] userParcelables = new UserParcelable[]{};
 
     @IntentAnnotation("")
-    private UserSerializable userSerializable;
+    private UserSerializable userSerializable = new UserSerializable();
 
     @IntentAnnotation("")
     private int id;
@@ -39,6 +39,6 @@ public class SecondActivity extends AppCompatActivity {
         SmokerUtil.bind(this);
         IntentUtil.bind(this);
 
-        textView.setText("name:" + name + ",\nid:" + id + ",\nuserParcelable:" + userParcelable + ",\nuserParcelables[0]:" + userParcelables[0] + ",\nuserSerializable:" + userSerializable);
+        textView.setText("name:" + name + ",\nid:" + id + ",\nuserParcelable:" + userParcelable + ",\nuserParcelables[0]:" + userParcelables + ",\nuserSerializable:" + userSerializable);
     }
 }

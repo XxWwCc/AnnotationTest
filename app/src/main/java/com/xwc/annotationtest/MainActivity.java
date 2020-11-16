@@ -3,9 +3,15 @@ package com.xwc.annotationtest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Switch;
 import android.widget.TextView;
 
+import com.xwc.annotationtest.annotation.Click;
+import com.xwc.annotationtest.annotation.ClickUtil;
 import com.xwc.annotationtest.annotation.Smoker;
 import com.xwc.annotationtest.annotation.SmokerUtil;
 
@@ -23,20 +29,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SmokerUtil.bind(this);
-
         textView.setText("仿写 ButtKnife 的 BindView 功能");
+
+        ClickUtil.bind(this);
 
         userParcelable = new UserParcelable("0090900909", new String[]{"2343532", "23424454364", "234324234"}, 25);
         userParcelables = new UserParcelable[]{userParcelable, userParcelable};
+    }
 
-        textView.setOnClickListener(view -> {
-            Intent intent = new Intent(this, SecondActivity.class);
-            intent.putExtra("name", "smoker");
-            intent.putExtra("userParcelable", userParcelable);
-            intent.putExtra("userParcelables", userParcelables);
-            intent.putExtra("userSerializable", new UserSerializable("5645646545", new String[]{"44455", "524454"}, 18));
-            intent.putExtra("id", 231326545);
-            startActivity(intent);
-        });
+    @Click({R.id.tv, R.id.tv_1})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv:
+                toSecond();
+                break;
+            case R.id.tv_1:
+                Log.e("MainActivity", "====================tv_1");
+                Intent intent = new Intent(this, SecondActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+
+    public void toSecond() {
+        Log.e("MainActivity", "====================tv");
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("name", "smoker");
+        intent.putExtra("userParcelable", userParcelable);
+        intent.putExtra("userParcelables", userParcelables);
+        intent.putExtra("userSerializable", new UserSerializable("5645646545", new String[]{"44455", "524454"}, 18));
+        intent.putExtra("id", 231326545);
+        startActivity(intent);
     }
 }
