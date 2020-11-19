@@ -1,15 +1,16 @@
-package com.xwc.annotationtest;
+package com.xwc.annotationtest.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Switch;
 import android.widget.TextView;
 
+import com.xwc.annotationtest.R;
+import com.xwc.annotationtest.bean.UserParcelable;
+import com.xwc.annotationtest.bean.UserSerializable;
 import com.xwc.annotationtest.annotation.Click;
 import com.xwc.annotationtest.annotation.ClickUtil;
 import com.xwc.annotationtest.annotation.Smoker;

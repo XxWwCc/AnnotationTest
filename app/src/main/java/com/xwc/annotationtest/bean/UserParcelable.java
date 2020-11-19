@@ -1,4 +1,4 @@
-package com.xwc.annotationtest;
+package com.xwc.annotationtest.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;

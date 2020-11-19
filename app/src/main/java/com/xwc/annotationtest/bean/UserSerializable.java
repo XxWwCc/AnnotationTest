@@ -1,4 +1,4 @@
-package com.xwc.annotationtest;
+package com.xwc.annotationtest.bean;
 
 import java.io.Serializable;
 import java.util.Arrays;

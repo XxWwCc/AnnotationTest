@@ -26,8 +26,9 @@ public class ClickUtil {
                 // 设置权限
                 method.setAccessible(true);
 
+                // 创建一个方法回调
                 ListenerInvocationHandler<Activity> handler = new ListenerInvocationHandler<>(method, activity);
-                // 设置动态代理
+                // 设置动态代理 代理 View.OnClickListener 的方法
                 Object listenerProxy = Proxy.newProxyInstance(activity.getClassLoader(), new Class[]{View.OnClickListener.class}, handler);
 
                 for (int id : ids) {

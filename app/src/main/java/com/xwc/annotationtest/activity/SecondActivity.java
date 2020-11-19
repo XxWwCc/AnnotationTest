@@ -1,4 +1,4 @@
-package com.xwc.annotationtest;
+package com.xwc.annotationtest.activity;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -6,6 +6,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.xwc.annotationtest.R;
+import com.xwc.annotationtest.bean.UserParcelable;
+import com.xwc.annotationtest.bean.UserSerializable;
 import com.xwc.annotationtest.annotation.IntentAnnotation;
 import com.xwc.annotationtest.annotation.IntentUtil;
 import com.xwc.annotationtest.annotation.Smoker;
@@ -34,7 +37,7 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
 
         SmokerUtil.bind(this);
         IntentUtil.bind(this);
