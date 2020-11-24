@@ -2,6 +2,7 @@ package com.xwc.annotationtest.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,11 +16,14 @@ import com.xwc.annotationtest.annotation.Click;
 import com.xwc.annotationtest.annotation.ClickUtil;
 import com.xwc.annotationtest.annotation.Smoker;
 import com.xwc.annotationtest.annotation.SmokerUtil;
+import com.xwc.annotationtest.view.SportsView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Smoker(R.id.tv)
     TextView textView;
+    @Smoker(R.id.sportsView)
+    SportsView sportsView;
 
     private UserParcelable userParcelable;
     private UserParcelable[] userParcelables;
@@ -36,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
         userParcelable = new UserParcelable("0090900909", new String[]{"2343532", "23424454364", "234324234"}, 25);
         userParcelables = new UserParcelable[]{userParcelable, userParcelable};
+
+        // 本质就是去重新设置 sweepAngle 的值
+        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(sportsView, "sweepAngle", 225);
+        objectAnimator.setStartDelay(1000);
+        objectAnimator.setDuration(2000);
+        objectAnimator.start();
+
     }
 
     @Click({R.id.tv, R.id.tv_1})

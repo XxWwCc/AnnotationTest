@@ -21,16 +21,28 @@ public class SportsView extends View {
     private Paint paint = new Paint(1);
     private Context mContext;
     private int RED;
-    private int ORANGE;
+    private int BLUE;
+    private int GREEN;
     private String sportText = "abcd";
     private Rect rect = new Rect();
     private Paint.FontMetrics fontMetrics = new Paint.FontMetrics();
+    public int sweepAngle = 10;
+
+    public int getSweepAngle() {
+        return sweepAngle;
+    }
+
+    public void setSweepAngle(int sweepAngle) {
+        this.sweepAngle = sweepAngle;
+        invalidate();
+    }
 
     public SportsView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         RED = ContextCompat.getColor(mContext, R.color.color_FF4500);
-        ORANGE = ContextCompat.getColor(mContext, R.color.color_FF8C00);
+        BLUE = ContextCompat.getColor(mContext, R.color.color_1E90FF);
+        GREEN = ContextCompat.getColor(mContext, R.color.color_3CB371);
     }
 
     {
@@ -44,15 +56,16 @@ public class SportsView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(ORANGE);
+        paint.setColor(BLUE);
         paint.setStrokeWidth(STROKE_WIDTH);
         canvas.drawCircle(getWidth()/2, getWidth()/2, RADIUS, paint);
 
         paint.setColor(RED);
         paint.setStrokeCap(Paint.Cap.ROUND);
-        canvas.drawArc(getWidth()/2-RADIUS, getHeight()/2-RADIUS, getWidth()/2+RADIUS, getHeight()/2+RADIUS, -90, 225, false, paint);
+        canvas.drawArc(getWidth()/2-RADIUS, getHeight()/2-RADIUS, getWidth()/2+RADIUS, getHeight()/2+RADIUS, -90, sweepAngle, false, paint);
 
         paint.setStyle(Paint.Style.FILL);
+        paint.setColor(GREEN);
         // 适用于静态文字
 //        paint.getTextBounds(sportText, 0, sportText.length(), rect);
 //        int offset = (rect.top + rect.bottom) /2;

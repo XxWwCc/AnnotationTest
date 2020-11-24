@@ -6,11 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
+    <com.xwc.annotationtest.view.ImageTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <com.xwc.annotationtest.view.SportsView
+        android:id="@+id/sportsView"
         android:layout_width="250dp"
         android:layout_height="250dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
