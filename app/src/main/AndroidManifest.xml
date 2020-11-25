@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AnnotationTest">
-        <activity android:name=".activity.FirstActivity">
+        <activity android:name=".activity.ZeroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activity.FirstActivity"/>
 
         <activity android:name=".activity.MainActivity"/>
 
