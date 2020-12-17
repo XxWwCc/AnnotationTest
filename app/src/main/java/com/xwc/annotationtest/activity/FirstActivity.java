@@ -4,7 +4,9 @@ import android.animation.AnimatorSet;
 import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.animation.TypeEvaluator;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +21,7 @@ import com.xwc.annotationtest.annotation.ClickUtil;
 import com.xwc.annotationtest.annotation.Smoker;
 import com.xwc.annotationtest.annotation.SmokerUtil;
 import com.xwc.annotationtest.view.CameraView;
+import com.xwc.annotationtest.view.PointView;
 import com.xwc.annotationtest.view.Utils;
 
 public class FirstActivity extends AppCompatActivity {
@@ -31,6 +34,8 @@ public class FirstActivity extends AppCompatActivity {
     ImageView imageView;
     @Smoker(R.id.tv_next)
     TextView tvNext;
+    @Smoker(R.id.point_view)
+    PointView pointView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,7 +89,11 @@ public class FirstActivity extends AppCompatActivity {
         animator.start();
 
         // TypeEvaluator
-
+        Point point = new Point((int) Utils.dp2px(100), (int) Utils.dp2px(100));
+        ObjectAnimator objectAnimator1 = ObjectAnimator.ofObject(pointView, "point", new PointTypeEvaluator(), point);
+        objectAnimator1.setStartDelay(1000);
+        objectAnimator1.setDuration(2000);
+        objectAnimator1.start();
     }
 
     @Click({R.id.tv_next})
@@ -92,4 +101,14 @@ public class FirstActivity extends AppCompatActivity {
         Intent intent = new Intent(FirstActivity.this, MainActivity.class);
         startActivity(intent);
     }
+
+    class PointTypeEvaluator implements TypeEvaluator<Point> {
+        @Override
+        public Point evaluate(float fraction, Point startValue, Point endValue) {
+            int x = (int) (startValue.x + (endValue.x - startValue.x) * fraction);
+            int y = (int) (startValue.y + (endValue.y - startValue.y) * fraction);
+            return new Point(x, y);
+        }
+    }
+
 }
